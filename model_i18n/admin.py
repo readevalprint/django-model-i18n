@@ -54,7 +54,7 @@ def get_urls(instance):
     to the end."""
     # original urls
     urls = instance.get_urls_orig()
-    return urls[:-1] + patterns('', 
+    return urls[:-1] + patterns('',
                 url(r'^(?P<obj_id>\d+)/(?P<language>[a-z]{2})/$',
                     instance.i18n_change_view),
                 urls[-1])
@@ -118,7 +118,7 @@ def i18n_change_view(instance, request, obj_id, language):
         'adminform': adminform, 'original': obj,
         'is_popup': request.REQUEST.has_key('_popup'),
         'errors': admin.helpers.AdminErrorList(form, None),
-        'root_path': instance.admin_site.root_path,
+        #'root_path': instance.admin_site.root_path,
         'app_label': opts.app_label, 'trans': True, 'lang': language,
         'current_language': dict(settings.LANGUAGES)[language],
         # override some values to provide an useful template
